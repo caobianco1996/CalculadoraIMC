@@ -17,6 +17,11 @@ function classificarImc(imc) {
     return "Obesidade grau III";
 }
 
+// Evita deixar um resultado antigo visível depois que os valores foram alterados.
+formulario.addEventListener("input", () => {
+    resultado.textContent = "";
+});
+
 formulario.addEventListener("submit", (evento) => {
     evento.preventDefault();
 
