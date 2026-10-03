@@ -17,11 +17,16 @@ formulario.addEventListener("submit", (evento) => {
     evento.preventDefault();
 
     const peso = Number(campoPeso.value);
-    const altura = Number(campoAltura.value);
+    const altura = Number(String(campoAltura.value).replace(",", "."));
 
-    if (!Number.isFinite(peso) || !Number.isFinite(altura) || peso <= 0 || altura <= 0) {
-        resultado.textContent = "Informe um peso e uma altura válidos, maiores que zero.";
+    if (!Number.isFinite(peso) || peso < 1 || peso > 500) {
+        resultado.textContent = "Informe um peso entre 1 e 500 kg.";
         campoPeso.focus();
+        return;
+    }
+    if (!Number.isFinite(altura) || altura < 0.5 || altura > 2.8) {
+        resultado.textContent = "Informe uma altura entre 0,50 e 2,80 m.";
+        campoAltura.focus();
         return;
     }
 
