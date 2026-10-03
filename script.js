@@ -3,6 +3,10 @@ const campoPeso = document.getElementById("peso");
 const campoAltura = document.getElementById("altura");
 const resultado = document.getElementById("resultado");
 
+function lerNumero(valor) {
+    return Number(String(valor).trim().replace(",", "."));
+}
+
 function classificarImc(imc) {
     if (imc < 17) return "Muito abaixo do peso";
     if (imc < 18.5) return "Abaixo do peso";
@@ -16,12 +20,17 @@ function classificarImc(imc) {
 formulario.addEventListener("submit", (evento) => {
     evento.preventDefault();
 
-    const peso = Number(campoPeso.value);
-    const altura = Number(campoAltura.value);
+    const peso = lerNumero(campoPeso.value);
+    const altura = lerNumero(campoAltura.value);
 
-    if (!Number.isFinite(peso) || !Number.isFinite(altura) || peso <= 0 || altura <= 0) {
-        resultado.textContent = "Informe um peso e uma altura válidos, maiores que zero.";
+    if (!Number.isFinite(peso) || peso < 1 || peso > 500) {
+        resultado.textContent = "Informe um peso entre 1 e 500 kg.";
         campoPeso.focus();
+        return;
+    }
+    if (!Number.isFinite(altura) || altura < 0.5 || altura > 2.8) {
+        resultado.textContent = "Informe uma altura entre 0,50 e 2,80 m.";
+        campoAltura.focus();
         return;
     }
 
