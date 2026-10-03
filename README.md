@@ -1,15 +1,25 @@
-# Calculadora de IMC
+# Calculadora de IMC — página web
 
-Uma página simples em HTML, CSS e JavaScript para calcular o Índice de Massa Corporal a partir do peso em quilogramas e da altura em metros.
+Página simples em HTML, CSS e JavaScript para calcular o Índice de Massa Corporal a partir do peso em quilogramas e da altura em metros. Não requer instalação nem dependências.
 
-## Como usar
+## Executar
 
-Abra `index.html` em um navegador, informe os valores e selecione **Calcular IMC**. A calculadora valida entradas inválidas e apresenta o resultado com duas casas decimais.
+Abra index.html diretamente em um navegador. Para servir a pasta localmente com Python:
 
-As faixas exibidas são referências gerais para adultos. O IMC não é diagnóstico e não substitui orientação de um profissional de saúde.
+~~~sh
+python -m http.server 8000
+~~~
 
-## Tecnologias
+Depois visite http://localhost:8000 e abra o arquivo index.html.
 
-- HTML
-- CSS
-- JavaScript sem dependências externas
+## Como verificar
+
+Não há framework ou script de testes automatizados. Faça estes testes manuais:
+
+1. Informe peso 65 e altura 1,70; confirme que o resultado é exibido com duas casas decimais.
+2. Informe valores vazios, zero, negativos ou texto; confirme que a entrada é rejeitada com uma mensagem.
+3. Teste decimais com vírgula e ponto.
+
+## Tecnologias e observação
+
+HTML, CSS e JavaScript sem dependências externas. As faixas são referências gerais para adultos; o IMC não é diagnóstico nem substitui avaliação profissional.
