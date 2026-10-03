@@ -1,43 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="description" content="Calculadora simples de Índice de Massa Corporal (IMC).">
+    <title>Calculadora de IMC</title>
+    <style>
+        :root { color-scheme: light; font-family: system-ui, sans-serif; }
+        body { max-width: 34rem; margin: 3rem auto; padding: 0 1rem; color: #172033; }
+        h1 { margin-bottom: .5rem; }
+        p { line-height: 1.5; }
+        form { display: grid; gap: .75rem; margin-top: 1.5rem; }
+        label { font-weight: 600; }
+        input, button { box-sizing: border-box; width: 100%; padding: .7rem; font: inherit; }
+        button { border: 0; border-radius: .4rem; background: #155eef; color: white; cursor: pointer; }
+        button:focus-visible, input:focus-visible { outline: 3px solid #84adff; outline-offset: 2px; }
+        #resultado { margin-top: 1rem; padding: .75rem 0; }
+    </style>
 </head>
 <body>
+    <main>
+        <h1>Calculadora de IMC</h1>
+        <p>Informe seu peso em quilogramas e sua altura em metros.</p>
 
-    <form onsubmit="return calcular(event)">
-        <label>Digite seu peso:</label><br/>
-        <input type="text" name="peso" id="peso" placeholder="Exemplo 65"> <br/><br/>
+        <form id="formulario-imc" novalidate>
+            <label for="peso">Peso (kg)</label>
+            <input type="number" name="peso" id="peso" min="1" max="500" step="any" inputmode="decimal" placeholder="Ex.: 65" required>
 
-        <label>Digite sua altura:</label><br/>
-        <input type="text" name="altura" id="altura" placeholder="Exemplo 1.90"> <br/><br/>
+            <label for="altura">Altura (m)</label>
+            <input type="number" name="altura" id="altura" min="0.5" max="2.8" step="any" inputmode="decimal" placeholder="Ex.: 1,70" required>
 
-        <input type="submit" value="Calcular IMC">
-    </form>
+            <button type="submit">Calcular IMC</button>
+        </form>
 
-    <div id="resultado"></div>
-
-    
-    <!-- <ul>
-        <li>1 - Suco</li>
-        <li>2 - Agua</li>
-        <li>3 - Sorvete</li>
-        <li>4 - Chamar Garçom</li>
-    </ul>
-
-    <button onclick="pedir()">Pedir</button> -->
-
-    <!-- <h2 id="area">
-        Bem vindo!
-    </h2> -->
-
-    <!-- <button onclick="entrar()">Acessar</button> -->
-
-
-
-    <script src = "script.js"></script>
+        <div id="resultado" role="status" aria-live="polite"></div>
+        <p><small>O IMC é uma estimativa geral e não substitui avaliação de um profissional de saúde.</small></p>
+    </main>
+    <script src="script.js"></script>
 </body>
 </html>
